@@ -17,17 +17,6 @@
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
-echo "src-git helloworld https://github.com/fw876/helloworld" >> ./feeds.conf.default 
-echo 'src-git lienol https://github.com/Lienol/openwrt-package' >>feeds.conf.default
-
-mkdir package/luci-app-openclash
-cd package/luci-app-openclash
-git init
-git remote add -f origin https://github.com/vernesong/OpenClash.git
-git config core.sparsecheckout true
-echo "luci-app-openclash" >> .git/info/sparse-checkout
-git pull --depth 1 origin master
-git branch --set-upstream-to=origin/master master
-pushd luci-app-openclash/tools/po2lmo
-make && sudo make install
-popd
+echo "src-git kenzo https://github.com/kenzok8/openwrt-packages" >> feeds.conf.default 
+echo "src-git small https://github.com/kenzok8/small" >> feeds.conf.default 
+git clone https://github.com/fangli/openwrt-vm-tools package/open-vm-tools
